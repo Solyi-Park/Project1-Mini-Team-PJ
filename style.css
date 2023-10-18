@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+}
+
+header {
+    background-color: antiquewhite;
+    height: 50px;
+}
+
+.movie_list {
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 20px;
+
+    /* background-color: yellow; */
+    width: 1100px;
+    margin: 20px auto 0 auto;
+}
+.item_movie {
+    /* background-color: red; */
+    height: 410px;
+    /* padding: 5px; */
+}
+.poster_img {
+    width: 100%;
+    max-height: 370px;
+    height: 100%;
+    border-radius: 20px;
+}
+.movie_cont {
+    /* background-color: blue; */
+    display: flex;
+    flex-direction: column;
+}
