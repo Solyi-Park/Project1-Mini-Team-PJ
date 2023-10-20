@@ -8,10 +8,7 @@ const options = {
 const movieUrl = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=ko-KR&page=1&sort_by=popularity.desc';
 const baseUrl = 'https://image.tmdb.org/t/p/'
 
-const searchUrl = `https://api.themoviedb.org/3/search/movie?include_adult=false&language=ko-KR&page=1`;
-
-
-    //Rated movie
+//Rated movie
 let movies = null;
 
 fetch(movieUrl, options)
@@ -49,33 +46,36 @@ fetch(movieUrl, options)
 
             moviesContainer.insertAdjacentHTML('beforeend', tempHtml);
         });
-
     })
     .catch(err => console.error(err));
 
 //영화 검색
 let allMovies = null;
-fetch(searchUrl, options)
-    .then(res => res.json())
-    .then(data => {
-        allMovies = data['results'];
-        
-        let searchInput = document.querySelector('#search_input');
-        const searchButton = document.querySelector('#search_button');
-        const searchMovies = () => {
-            //검색창 input값 가져오기
-            const searchWord = searchInput.value;
-            //영화 데이터 필터링하기 filter()
-            //1. 영화 데이터 > title 접근
-            //2. 검색어와 데이터내용(title) 일치하는지 확인하기 includes() -> 영어 검색하려면 toUperCase나 toLowerCase 사용해야하나?...?
-            const filteredMovies = allMovies.filter(movie =>
-                movie.title.includes(searchWord));
-        }
-        searchButton.addEventListener('click', searchMovies);
-    })
-    .catch(err => console.error(err));
+let searchInput = document.querySelector('#search_input');
+const searchButton = document.querySelector('#search_button');
+console.log(searchButton);
+const searchMovies = () => {
+    //검색창 input값 가져오기
+    const searchWord = searchInput.value;
+    fetch(`https://api.themoviedb.org/3/search/movie?query=${searchWord}&include_adult=false&language=ko-KR&page=1&region=KR`, options)
+        .then(res => res.json())
+        .then(data => {
+            allMovies = data['results'];
+            console.log(allMovies);
+            const searchButton = document.querySelector('#search_button');
+        })
+        .catch(err => console.error(err));
 
 
+    console.log(searchWord);
+    //영화 데이터 필터링하기 filter()
+    //1. 영화 데이터 > title 접근
+    //2. 검색어와 데이터내용(title) 일치하는지 확인하기 includes() -> 영어 검색하려면 toUperCase나 toLowerCase 사용해야하나?...?
+    // const filteredMovies = allMovies.filter(movie =>
+    //     movie.title.includes(searchWord));
+    //     console.log(searchWord);
+}
+searchButton.addEventListener('click', searchMovies);
 
 
 // const moviesContainer = document.getElementById('movieList');
