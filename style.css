@@ -1,37 +1,50 @@
 body {
     margin: 0;
-    background-color: #fff;
+    background-color: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
+    color: rgb(57, 57, 58)
 }
 
 header {
     /* background-color: coral; */
-        height: 150px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 .search_area {
-    /* background-color: red; */
+    background-color: rgb(255, 255, 255);
     width: 500px;
-    height: 40px;
+    height: 50px;
     padding: 0 15px;
     margin-top: 50px;
     border: 1px solid rgb(56, 55, 55);
-    border-radius: 20px;
+    border-radius: 30px;
 
 }
 
 #search_input {
+    background-color: rgb(255, 255, 255);
     border: none;
     width: 400px;
     height: 30px;
-    margin: 4px 0 0 10px;
+    margin: 8px 0 0 10px;
+    font-size: 16px;
 }
 
 #search_input:focus {
     outline: none;
 }
+
+#search_input:focus::placeholder {
+    color: transparent;
+}
+
 #search_button {
     width: 75px;
     height: 35px;
@@ -41,18 +54,15 @@ header {
     cursor: pointer;
 }
 
-
-
 #movieList {
     /* background-color: yellow; */
-    width: 100%;
+    width: 85%;
     display: grid;
     grid-template-rows: repeat(5, 1fr);
     grid-template-columns: repeat(4, 1fr);
     column-gap: 10px;
     row-gap: 10px;
     justify-content: space-between;
-
     margin: 20px auto 0 auto;
 }
 
@@ -60,26 +70,38 @@ header {
     /* background-color: red; */
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 320px;
+    align-items: flex-start;
+    width: 310px;
     height: 700px;
-    padding: 5px;
+    padding: 10px;
     line-height: 150%;
 }
 
 .poster_img {
-
     max-width: 300px;
     border-radius: 20px;
+    box-shadow: 0 0 1.5px 0;
 }
 
 .movie_cont {
     /* background-color: blue; */
+    min-width: 97%;
     display: flex;
     flex-direction: column;
-    height: 200px;
-    overflow: scroll;
 }
+strong {
+    font-size: 50px;
+    font-style:italic;
+}
+.cont_text {
+    font-weight: 700;
+}
+
+.scroll {
+    height: 200px;
+    overflow-y: scroll;
+}
+
 
 .movie_cont>strong {
     font-size: 20px;

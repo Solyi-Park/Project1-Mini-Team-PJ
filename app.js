@@ -40,10 +40,10 @@ fetch(movieUrl, options)
                                 </div>
                                 <div class="movie_cont">
                                     <strong>${title}</strong>
-                                    <span>평점: ${voteAverage}</span>
-                                    <span>개봉일: ${releaseDate}</span>
-                                    <span>${overview}</span>
+                                    <span class="cont_text">평점 ${voteAverage}</span>
+                                    <span class="cont_text">개봉 ${releaseDate}</span>
                                 </div>
+                                <span class="scroll">${overview}</span>
                             </div>
                              `;
 
