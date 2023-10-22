@@ -116,8 +116,8 @@ const searchMovies = () => {
                                     </div>
                                      `;
                     console.log(tempHtml);
-                    // moviesContainer.insertAdjacentHTML('beforeend', tempHtml);
-                    moviesContainer.innerHTML = tempHtml;
+                    moviesContainer.insertAdjacentHTML('beforeend', tempHtml);
+                    // moviesContainer.innerHTML = tempHtml;
                     //insertAdjacentHTML은 삽입할 HTML의 위치를 설정할 수 있고 
                     //innerHTML은 기존 내용을 지우고 새로운 내용으로 완전히 대체됨.
                     //위 카드 내용을 innerHTML로 사용시 검색 결과가 다르게 나옴. 
