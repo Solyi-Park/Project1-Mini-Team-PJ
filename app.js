@@ -88,7 +88,9 @@ const searchMovies = () => {
                 // 자식 요소가 다 지워지면 멈춤.
             };
             //2. 데이터가 있으면 카드를 붙이고, 없으면 검색 결과가 없다고 표시한다.
-            if (allMovies.length > 0) {
+            if(searchWord === "") {
+                window.location.reload();
+            } else if (searchWord !== null && allMovies.length > 0) {
                 allMovies.forEach(movie => {
                     let title = movie.title;
                     let voteAverage = movie.vote_average;
@@ -121,8 +123,6 @@ const searchMovies = () => {
                     //insertAdjacentHTML은 삽입할 HTML의 위치를 설정할 수 있고 
                     //innerHTML은 기존 내용을 지우고 새로운 내용으로 완전히 대체됨.
                     //위 카드 내용을 innerHTML로 사용시 검색 결과가 다르게 나옴. 
-
-
                 });
             } else {
                 moviesContainer.innerHTML = `<p>검색어 '${searchWord}'에 일치하는 결과가 없습니다.</p>`;
