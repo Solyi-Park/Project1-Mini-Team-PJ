@@ -35,18 +35,18 @@ const displayMovies = () => {
         };
         //받아온 영화 데이터 카드 만들어서 html에 붙이기
         const tempHtml = `
-                            <div class="item_movie">
+                            <div class="img_container">
                                 <div class="movie_poster">
                                     <img id="${id}" class="poster_img"
                                         src="${getImageUrl(posterPath)}"
                                         alt="${title}">
                                 </div>
+                                <span class="overview">${overview}</span>
                                 <div class="movie_cont">
                                     <strong>${title}</strong>
                                         <span class="cont_text">평점 ${voteAverage}</span>
                                         <span class="cont_text">개봉 ${releaseDate}</span>
                                 </div>
-                                    <span class="scroll">${overview}</span>
                             </div>
                             `;
 
@@ -87,7 +87,9 @@ const searchMovies = () => {
                 // removeChid 메서드->  while 루프를 돌면서 firstChid를 지움 -> 모든 자식 요소 지우기
                 // 자식 요소가 다 지워지면 멈춤.
             };
-            //2. 데이터가 있으면 카드를 붙이고, 없으면 검색 결과가 없다고 표시한다.
+            //1. 빈 검색창 검색시 페이지 reload
+           //2.  검색결과 있으면 카드 붙이기
+           //3. 없으면 검색 결과가 없다고 표시하기
             if(searchWord === "") {
                 window.location.reload();
             } else if (searchWord !== null && allMovies.length > 0) {
@@ -97,23 +99,25 @@ const searchMovies = () => {
                     let overview = movie.overview;
                     let releaseDate = movie.release_date;
                     let posterPath = movie.poster_path;
+                    let id = movie.id
 
                     const getImageUrl = (posterPath) => {
                         return `https://image.tmdb.org/t/p/original${posterPath}`;
                     };
 
                     const tempHtml = `
-                                    <div class="item_movie">
+                                    <div class="img_container">
                                         <div class="movie_poster">
-                                            <img class="poster_img"
+                                            <img id="${id}" class="poster_img"
                                                 src="${getImageUrl(posterPath)}"
                                                 alt="${title}">
                                         </div>
+                                        <span class="overview">${overview}</span>       
                                         <div class="movie_cont">
                                             <strong>${title}</strong>
-                                            <span>평점: ${voteAverage}</span>
-                                            <span>개봉일: ${releaseDate}</span>
-                                            <span>${overview}</span>
+                                            <span class="cont_text">평점: ${voteAverage}</span>
+                                            <span class="cont_text">개봉일: ${releaseDate}</span>
+
                                         </div>
                                     </div>
                                      `;
@@ -125,11 +129,10 @@ const searchMovies = () => {
                     //위 카드 내용을 innerHTML로 사용시 검색 결과가 다르게 나옴. 
                 });
             } else {
-                moviesContainer.innerHTML = `<p>검색어 '${searchWord}'에 일치하는 결과가 없습니다.</p>`;
+                moviesContainer.innerHTML = `<p>'${searchWord}'에 일치하는 결과가 없습니다.</p>`;
             };
         })
         .catch(err => console.error(err));
-
 }
 searchButton.addEventListener('click', searchMovies);
 
