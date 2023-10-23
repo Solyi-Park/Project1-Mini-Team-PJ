@@ -86,21 +86,23 @@ header {
   }
 
 .poster_img {
+    /* position: absolute; */
     max-width: 240px;
     min-height: 380px;
     height: 100%;
     border-radius: 20px;
-    box-shadow: 0 0 1.5px 0;
+    box-shadow: 0 15px 5px -10px grey; /*카드 아래에만 그림자 주기*/
 }
 
 .overview {
     width: 200px;
-    height: 320px;
+    height: 340px;
+        /*poster_img와 사이즈를 맞추면 자꾸 밖으로 튀어나감*/
     border-radius: 20px;
     overflow-y: hidden;
     position: absolute; /* img_container 와 겹치게*/
-    top: 0; /*위치 top, left로*/
-    left: 0;
+    top: 0;
+    left: 0;    /*위치 top, left로*/
     background: rgba(0, 0, 0, 0.523);
     color: #fff; 
     opacity: 0;
@@ -111,15 +113,17 @@ header {
     padding: 20px;
     transition: opacity 0.5s;
   }
+
   .img_container:hover .overview {
     opacity: 1;
     visibility: visible;
     /* display: block; 호버 시 보이게 하려고 했는데 안됨 */
   }
-  .img_container:hover .poster_img {
+
+  /* .img_container:hover .poster_img {
     filter: brightness(50%)
-    /* display: block; 호버 시 보이게 하려고 했는데 안됨 */
-  }
+    display: block; 호버 시 보이게 하려고 했는데 안됨
+  } */
 
 
 .movie_cont {
@@ -129,6 +133,7 @@ header {
     flex-direction: column;
 }
 strong {
+    font-size: 20px;
     padding-top: 10px;
 }
 .cont_text {

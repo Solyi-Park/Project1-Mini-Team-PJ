@@ -16,6 +16,7 @@ fetch(movieUrl, options)
     .then(res => res.json())
     .then(data => {
         movies = data['results']
+        //함수를 밖에 선언해보고 시
         displayMovies();
         alertId();
     })
@@ -28,6 +29,9 @@ const displayMovies = () => {
         let overview = movie.overview;
         let releaseDate = movie.release_date;
         let posterPath = movie.poster_path;
+        // 메인화면 temp_html을 복사 붙여넣기하면 자꾸 검색결과 오류가 생김
+        //여기에 id변수 선언이 안되어있어서 그랬음. 그냥 id="${id}" 적어놓기만 해도 문제가 없는 줄 알았음.
+        //변수 선언하고나니 잘 되네..... 그것도 모르고 엉뚱한거 다 갈아 엎었네
         let id = movie.id
 
         const getImageUrl = posterPath => {
@@ -54,9 +58,12 @@ const displayMovies = () => {
     });
 };
 
+//카드 클릭시 id 얼럿띄우기₩
 let alertId = function () {
     movies.forEach(movie => {
         let id = movie.id;
+        //이거 안돼서 돌하버리는 줄 알았음.... 
+        // document.querySelector로 처음에 하다가 id 값을 넣어야 하구나 알게됨 ->근데 카드를 넣을때 마다 모든 카드의 아이디가 다 출력되는 문제가 있었음..
         let eachMovie = document.getElementById(id);
         eachMovie.addEventListener('click', function() {
             console.log(id);
