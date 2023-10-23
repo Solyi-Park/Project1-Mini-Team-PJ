@@ -1,12 +1,12 @@
 body {
     margin: 0;
     background-color: rgb(255, 255, 255);
-    background-color: rgb(255, 255, 255);
     color: rgb(57, 57, 58)
 }
 
 header {
     /* background-color: coral; */
+    width: 100%;
     height: 150px;
     display: flex;
     align-items: center;
@@ -57,11 +57,12 @@ header {
 #movieList {
     /* background-color: yellow; */
     width: 94%;
+    /* height: 700px; */
     display: grid;
     grid-template-rows: repeat(4, 1fr);
     grid-template-columns: repeat(5, 1fr);
     column-gap: 10px;
-    row-gap: 10px;
+    row-gap: 150px;
     justify-content: space-between;
     margin: 20px auto 0 auto;
 }
@@ -72,10 +73,17 @@ header {
     flex-direction: column;
     align-items: flex-start;
     width: 240px;
-    height: 700px;
+    height: 450px;
     padding: 10px;
     line-height: 150%;
 }
+
+.img_container {
+    /* background-color: blueviolet; */
+    position: relative;
+    width: 220px;
+    height: 360px;
+  }
 
 .poster_img {
     max-width: 240px;
@@ -84,6 +92,35 @@ header {
     border-radius: 20px;
     box-shadow: 0 0 1.5px 0;
 }
+
+.overview {
+    width: 200px;
+    height: 320px;
+    border-radius: 20px;
+    overflow-y: hidden;
+    position: absolute; /* img_container 와 겹치게*/
+    top: 0; /*위치 top, left로*/
+    left: 0;
+    background: rgba(0, 0, 0, 0.523);
+    color: #fff; 
+    opacity: 0;
+    visibility: hidden; 
+    /* display: none; */ 
+    /*display none으로 했다가 마우스 hover block으로 하니 트랜지션 적용이 안되네*/
+    text-align: center;
+    padding: 20px;
+    transition: opacity 0.5s;
+  }
+  .img_container:hover .overview {
+    opacity: 1;
+    visibility: visible;
+    /* display: block; 호버 시 보이게 하려고 했는데 안됨 */
+  }
+  .img_container:hover .poster_img {
+    filter: brightness(50%)
+    /* display: block; 호버 시 보이게 하려고 했는데 안됨 */
+  }
+
 
 .movie_cont {
     /* background-color: blue; */
