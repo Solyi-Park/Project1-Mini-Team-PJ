@@ -58,12 +58,13 @@ const displayMovies = () => {
     });
 };
 
-//카드 클릭시 id 얼럿띄우기₩
+//카드 클릭시 id 얼럿띄우기
 let alertId = function () {
     movies.forEach(movie => {
         let id = movie.id;
         //이거 안돼서 돌하버리는 줄 알았음.... 
-        // document.querySelector로 처음에 하다가 id 값을 넣어야 하구나 알게됨 ->근데 카드를 넣을때 마다 모든 카드의 아이디가 다 출력되는 문제가 있었음..
+        // document.querySelector로 처음에 하다가 id 값을 넣어야 하구나 알게됨 ->
+        //근데 카드를 넣을때 마다 모든 카드의 아이디가 다 출력되어버림... 각각의 카드 아이디가 받아와져야 되는데 그걸 못 함.
         let eachMovie = document.getElementById(id);
         eachMovie.addEventListener('click', function() {
             console.log(id);
@@ -142,6 +143,13 @@ const searchMovies = () => {
         .catch(err => console.error(err));
 }
 searchButton.addEventListener('click', searchMovies);
+
+//키보드 enter 검색 실행시키기
+searchInput.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+    document.getElementById("search_button").click();
+  }
+});
 
 
 

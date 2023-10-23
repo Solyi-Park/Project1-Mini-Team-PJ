@@ -91,7 +91,7 @@ header {
     min-height: 380px;
     height: 100%;
     border-radius: 20px;
-    box-shadow: 0 15px 5px -10px grey; /*카드 아래에만 그림자 주기*/
+    box-shadow: 0 15px 5px -12px grey; /*카드 아래에만 그림자 주기*/
 }
 
 .overview {
@@ -99,7 +99,7 @@ header {
     height: 340px;
         /*poster_img와 사이즈를 맞추면 자꾸 밖으로 튀어나감*/
     border-radius: 20px;
-    overflow-y: hidden;
+    overflow-y: scroll;
     position: absolute; /* img_container 와 겹치게*/
     top: 0;
     left: 0;    /*위치 top, left로*/
